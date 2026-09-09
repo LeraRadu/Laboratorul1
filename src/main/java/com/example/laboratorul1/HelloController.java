@@ -1,5 +1,6 @@
 package com.example.laboratorul1;
 
+import com.example.laboratorul1.timere.Cronometru;
 import com.example.laboratorul1.timere.PauseTimer;
 
 import com.example.laboratorul1.timere.TimerSetAutobuz;
@@ -31,12 +32,38 @@ public class HelloController {
     @FXML
     private ImageView backgroundImage;
 
+    private Cronometru cronometru;
+    private int timpSalvat;
+
+    @FXML
+    public void initialize() {
+        cronometru = new Cronometru(dialogueText);
+
+        start.setVisible(false);
+        stop.setVisible(false);
+}
+
+@FXML
+private void onStartClick() {
+    cronometru.start();
+}
+
+@FXML
+private void onStopClick() {
+    cronometru.stop();
+
+    timpSalvat = cronometru.getSecunde();
+
+    System.out.println("Timp măsurat: " + timpSalvat + " secunde");
+}
+
     public int currentSc = 1;
     private TimerSetAutobuz timerSetAutobuz = new TimerSetAutobuz();
 
     @FXML
     private void onNextClick() {
-
+        start.setVisible(false);
+        stop.setVisible(false);
 
         PauseTimer p = new PauseTimer();
         if (currentSc == 1) {
@@ -63,10 +90,16 @@ public class HelloController {
         } else if (currentSc == 4) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena5.png").toExternalForm()));
             dialogueText.setText("Kira decide să vadă cât timp va continua băiatul să o privească și" + "\n" + "porneste cronometrul la ceas.");
+
+            start.setVisible(true);
+            stop.setVisible(true);
             currentSc = 5;//trebu de adaugat butonul start si stop pentru cronometru.
             //cronometru() trebu sa accesez cronometru() din Cronometru.java si sa il pun in scena 5, dar nu stiu cum sa fac asta.
 
         } else if (currentSc == 5) {
+            cronometru.stop();
+            start.setVisible(false);
+            stop.setVisible(false);
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena6.png").toExternalForm()));
             dialogueText.setText("Kira: -E vreo problemă? De ce mă privești așa?");
             currentSc = 6;
