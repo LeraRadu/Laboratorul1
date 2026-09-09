@@ -34,7 +34,7 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="start" layoutX="504.0" layoutY="316.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="141.0" text="Star " />
-      <Button fx:id="stop" layoutX="667.0" layoutY="316.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="141.0" text="Stop" />
+      <Button fx:id="start" layoutX="504.0" layoutY="316.0" mnemonicParsing="false" onAction="#onStartClick" prefHeight="36.0" prefWidth="141.0" text="Start " />
+      <Button fx:id="stop" layoutX="667.0" layoutY="316.0" mnemonicParsing="false" onAction="#onStopClick" prefHeight="36.0" prefWidth="141.0" text="Stop" />
    </children>
 </AnchorPane>
