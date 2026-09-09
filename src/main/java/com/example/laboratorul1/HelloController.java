@@ -10,6 +10,10 @@ import javafx.scene.image.Image;
 
 public class HelloController {
     @FXML
+    private Button start;
+    @FXML
+    private Button stop;
+    @FXML
     private Label speakerName;
     @FXML
     private Label dialogueText;

@@ -8,10 +8,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:controller="com.example.laboratorul1.HelloController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorul1.HelloController">
    <children>
-      <ImageView  fx:id="backgroundImage" fitHeight="480.0" fitWidth="855.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="backgroundImage" fitHeight="480.0" fitWidth="855.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Scene/scena1.png" />
          </image>
@@ -23,7 +22,7 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Button fx:id="continueButton" onAction="#onNextClick" layoutX="732.0" layoutY="73.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="101.0" text="Next">
+            <Button fx:id="continueButton" layoutX="732.0" layoutY="73.0" mnemonicParsing="false" onAction="#onNextClick" prefHeight="32.0" prefWidth="101.0" text="Next">
                <font>
                   <Font size="16.0" />
                </font>
@@ -35,5 +34,7 @@
             </Label>
          </children>
       </Pane>
+      <Button fx:id="start" layoutX="504.0" layoutY="316.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="141.0" text="Star " />
+      <Button fx:id="stop" layoutX="667.0" layoutY="316.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="141.0" text="Stop" />
    </children>
 </AnchorPane>
