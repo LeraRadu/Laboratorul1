@@ -27,12 +27,16 @@ public class HelloController {
 
     @FXML
     private void onNextClick() {
+        start.setVisible(false);
+        stop.setVisible(false);
+
         PauseTimer p = new PauseTimer();
         if (currentSc == 1) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena2.png").toExternalForm()));//url to string
             dialogueText.setText("Kira merge spre stație prin liniștea întunecată.");
             p.start(2, () -> {
                 dialogueText.setText("În scurt timp, ajunse la stație.");
+
             });
             currentSc = 2;
 
@@ -41,10 +45,12 @@ public class HelloController {
             dialogueText.setText("Kira se uită la ceas."); // peste cateva sec apare 20:30
             currentSc = 3; //Aici as mai adauga, Troleibuzul 10 trebuia să apară în câteva minute.
 
+
         } else if (currentSc == 3) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena4.png").toExternalForm()));
             dialogueText.setText("Se așează și scoate telefonul. Cu colțul ochiului observă un băiat aflat" + "\n" + "câțiva metri mai încolo ce o privea apăsător. ");
             currentSc = 4;
+
 
         } else if (currentSc == 4) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena5.png").toExternalForm()));
@@ -56,6 +62,8 @@ public class HelloController {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena6.png").toExternalForm()));
             dialogueText.setText("Kira: -E vreo problemă? De ce mă privești așa?");
             currentSc = 6;
+
+
         } else if (currentSc == 6) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena7.png").toExternalForm()));
             dialogueText.setText("???: -Când vine troleibuzul 10?");
