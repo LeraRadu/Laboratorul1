@@ -2,14 +2,22 @@ package com.example.laboratorul1;
 
 import com.example.laboratorul1.timere.PauseTimer;
 
+import com.example.laboratorul1.timere.TimerSetAutobuz;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
 public class HelloController {
+    @FXML
+    private Label  timerLabel;
+    @FXML
+    private Button startTimerButton;
+    @FXML
+    private TextField  timerInput;
     @FXML
     private Button start;
     @FXML
@@ -24,11 +32,11 @@ public class HelloController {
     private ImageView backgroundImage;
 
     public int currentSc = 1;
+    private TimerSetAutobuz timerSetAutobuz = new TimerSetAutobuz();
 
     @FXML
     private void onNextClick() {
-        start.setVisible(false);
-        stop.setVisible(false);
+
 
         PauseTimer p = new PauseTimer();
         if (currentSc == 1) {
@@ -92,6 +100,16 @@ public class HelloController {
             dialogueText.setText("Offff laboratoarele estea =((");
             currentSc = 10;
         }
+    }
+
+    @FXML
+    private void onStartTimerAutob() {
+
+        int seconds = Integer.parseInt(timerInput.getText());
+
+        timerSetAutobuz.start(seconds, timerLabel, () -> {
+            System.out.println("Timer terminat!");
+        });
     }
 }
 
