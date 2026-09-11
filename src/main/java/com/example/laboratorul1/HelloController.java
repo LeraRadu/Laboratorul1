@@ -41,6 +41,9 @@ public class HelloController {
 
         start.setVisible(false);
         stop.setVisible(false);
+        timerInput.setVisible(false);
+        timerLabel.setVisible(false);
+        startTimerButton.setVisible(false);
 }
 
 @FXML
@@ -55,6 +58,7 @@ private void onStopClick() {
     timpSalvat = cronometru.getSecunde();
 
     System.out.println("Timp măsurat: " + timpSalvat + " secunde");
+    onNextClick();
 }
 
     public int currentSc = 1;
@@ -62,8 +66,7 @@ private void onStopClick() {
 
     @FXML
     private void onNextClick() {
-        start.setVisible(false);
-        stop.setVisible(false);
+
 
         PauseTimer p = new PauseTimer();
         if (currentSc == 1) {
@@ -77,7 +80,11 @@ private void onStopClick() {
 
         } else if (currentSc == 2) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena3.png").toExternalForm()));
-            dialogueText.setText("Kira se uită la ceas."); // peste cateva sec apare 20:30
+            dialogueText.setText("Stația era aproape goală."); // peste cateva sec apare 20:30
+            p.start(2, () -> {
+                dialogueText.setText("Dar... Cu colțul ochiului Kira observă un bărbat.\n");
+
+            });
             currentSc = 3; //Aici as mai adauga, Troleibuzul 10 trebuia să apară în câteva minute.
 
 
@@ -85,12 +92,18 @@ private void onStopClick() {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena4.png").toExternalForm()));
             dialogueText.setText("Se așează și scoate telefonul. Cu colțul ochiului observă un băiat aflat" + "\n" + "câțiva metri mai încolo ce o privea apăsător. ");
             currentSc = 4;
+            p.start(2, () -> {
+                dialogueText.setText("În scurt timp, ajunse la stație.");
 
+            });
 
         } else if (currentSc == 4) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena5.png").toExternalForm()));
             dialogueText.setText("Kira decide să vadă cât timp va continua băiatul să o privească și" + "\n" + "porneste cronometrul la ceas.");
+            p.start(2, () -> {
+                dialogueText.setText("APASĂ START PENTRU A PORNI TIMERUL");
 
+            });
             start.setVisible(true);
             stop.setVisible(true);
             currentSc = 5;//trebu de adaugat butonul start si stop pentru cronometru.
@@ -118,10 +131,17 @@ private void onStopClick() {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena9.png").toExternalForm()));
             dialogueText.setText("Pe aplicație scrie că vine în aproximativ 1 minut.");
             currentSc = 9;
-        }else if (currentSc == 9) {
+            timerInput.setVisible(true);
+            timerLabel.setVisible(true);
+            startTimerButton.setVisible(true);
+
+        } else if (currentSc == 9) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena10.png").toExternalForm()));
             dialogueText.setText("Nu te urca. Strigă convingător necunoscutul. ");
             currentSc = 10 ;
+            timerInput.setVisible(false);
+            timerLabel.setVisible(false);
+            startTimerButton.setVisible(false);
         }else if (currentSc == 10) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena11.png").toExternalForm()));
             dialogueText.setText("> Scuze, dar eu mă duc acasă. Spune kira și urcă în trolebuz\r\n" + //
@@ -141,7 +161,7 @@ private void onStopClick() {
         int seconds = Integer.parseInt(timerInput.getText());
 
         timerSetAutobuz.start(seconds, timerLabel, () -> {
-            System.out.println("Timer terminat!");
+            onNextClick();
         });
     }
 }

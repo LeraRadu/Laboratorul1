@@ -35,8 +35,8 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="start" layoutX="504.0" layoutY="316.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="141.0" text="Star " />
-      <Button fx:id="stop" layoutX="667.0" layoutY="316.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="141.0" text="Stop" />
+      <Button fx:id="start" layoutX="504.0" onAction="#onStartClick" layoutY="316.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="141.0" text="Star " />
+      <Button fx:id="stop" layoutX="667.0" onAction="#onStopClick" layoutY="316.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="141.0" text="Stop" />
 
       <TextField fx:id="timerInput" layoutX="723.0" layoutY="188.0" prefHeight="25.0" prefWidth="47.0" />
 
