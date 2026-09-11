@@ -2,8 +2,9 @@ package com.example.laboratorul1;
 
 import com.example.laboratorul1.timere.Cronometru;
 import com.example.laboratorul1.timere.PauseTimer;
-
 import com.example.laboratorul1.timere.TimerSetAutobuz;
+import com.example.laboratorul1.timere.TransitionTImer;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -30,20 +31,28 @@ public class HelloController {
     @FXML
     private Button continueButton;
     @FXML
+    private Button boardTrolleyButton;
+    @FXML
+    private Button stayButton;
+    @FXML
     private ImageView backgroundImage;
 
     private Cronometru cronometru;
+    private TransitionTImer transitionTimer;
     private int timpSalvat;
 
     @FXML
     public void initialize() {
         cronometru = new Cronometru(dialogueText);
+        transitionTimer = new TransitionTImer();
 
         start.setVisible(false);
         stop.setVisible(false);
         timerInput.setVisible(false);
         timerLabel.setVisible(false);
         startTimerButton.setVisible(false);
+        boardTrolleyButton.setVisible(false);
+        stayButton.setVisible(false);
 }
 
 @FXML
@@ -137,22 +146,59 @@ private void onStopClick() {
 
         } else if (currentSc == 9) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena10.png").toExternalForm()));
-            dialogueText.setText("Nu te urca. Strigă convingător necunoscutul. ");
-            currentSc = 10 ;
+            dialogueText.setText("Nu te urca. Strigă convingător necunoscutul.");
+            currentSc = 10;
             timerInput.setVisible(false);
             timerLabel.setVisible(false);
             startTimerButton.setVisible(false);
+            continueButton.setVisible(false);
+            boardTrolleyButton.setVisible(true);
+            stayButton.setVisible(true);
+            timerLabel.setVisible(true);
+            transitionTimer.start(4, timerLabel, this::onTimeExpired);
         }else if (currentSc == 10) {
-            backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena11.png").toExternalForm()));
-            dialogueText.setText("> Scuze, dar eu mă duc acasă. Spune kira și urcă în trolebuz\r\n" + //
-                                "Ușile se închid, Troleibuzul pleacă.\r\n" + //
-                                "\r\n");
-            currentSc = 11;
+            onTimeExpired();
         }else if (currentSc == 11) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/final3.png").toExternalForm()));
             dialogueText.setText("Offff laboratoarele estea =((");
             currentSc = 10;
         }
+    }
+
+    @FXML
+    private void onBoardTrolleyClick() {
+        transitionTimer.stop();
+        boardTrolleyButton.setVisible(false);
+        stayButton.setVisible(false);
+        timerLabel.setVisible(false);
+        continueButton.setVisible(true);
+        backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena11.png").toExternalForm()));
+        dialogueText.setText("> Scuze, dar eu mă duc acasă. Spune Kira și urcă în troleibuz.\n"
+                + "Ușile se închid, troleibuzul pleacă.");
+        currentSc = 11;
+    }
+
+    @FXML
+    private void onStayClick() {
+        transitionTimer.stop();
+        showFinal("/Scene/final1.png", "Kira rămâne în stație.");
+    }
+
+    private void onTimeExpired() {
+        if (currentSc == 10) {
+            showFinal("/Scene/final2.png", "Kira nu a reușit să aleagă la timp.");
+        }
+    }
+
+    private void showFinal(String imagePath, String text) {
+        transitionTimer.stop();
+        boardTrolleyButton.setVisible(false);
+        stayButton.setVisible(false);
+        timerLabel.setVisible(false);
+        continueButton.setVisible(false);
+        backgroundImage.setImage(new Image(getClass().getResource(imagePath).toExternalForm()));
+        dialogueText.setText(text);
+        currentSc = 12;
     }
 
     @FXML

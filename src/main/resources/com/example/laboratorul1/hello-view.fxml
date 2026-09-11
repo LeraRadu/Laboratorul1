@@ -38,6 +38,9 @@
       <Button fx:id="start" layoutX="504.0" onAction="#onStartClick" layoutY="316.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="141.0" text="Star " />
       <Button fx:id="stop" layoutX="667.0" onAction="#onStopClick" layoutY="316.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="141.0" text="Stop" />
 
+      <Button fx:id="boardTrolleyButton" layoutX="470.0" layoutY="300.0" mnemonicParsing="false" onAction="#onBoardTrolleyClick" prefHeight="40.0" prefWidth="165.0" text="Urcă în troleibuz" />
+      <Button fx:id="stayButton" layoutX="650.0" layoutY="300.0" mnemonicParsing="false" onAction="#onStayClick" prefHeight="40.0" prefWidth="145.0" text="Rămâi" />
+
       <TextField fx:id="timerInput" layoutX="723.0" layoutY="188.0" prefHeight="25.0" prefWidth="47.0" />
 
       <Label fx:id="timerLabel" layoutX="667.0" layoutY="107.0" prefHeight="61.0" prefWidth="112.0" textFill="WHITE">
