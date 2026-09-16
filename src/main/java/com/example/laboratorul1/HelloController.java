@@ -99,10 +99,14 @@ private void onStopClick() {
 
         } else if (currentSc == 3) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena4.png").toExternalForm()));
-            dialogueText.setText("Se așează și scoate telefonul. Cu colțul ochiului observă un băiat aflat" + "\n" + "câțiva metri mai încolo ce o privea apăsător. ");
+            dialogueText.setText("Se așează și scoate telefonul. Dar gândurile ei au devenit apăsătoare");
             currentSc = 4;
             p.start(2, () -> {
-                dialogueText.setText("În scurt timp, ajunse la stație.");
+                dialogueText.setText(" ”Hmm... De ce acel om așa se uită la mine...” ");
+                p.start(2, () -> {
+                    dialogueText.setText(" ”Ce straniu...”");
+
+                });
 
             });
 
@@ -123,22 +127,26 @@ private void onStopClick() {
             start.setVisible(false);
             stop.setVisible(false);
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena6.png").toExternalForm()));
-            dialogueText.setText("Kira: -E vreo problemă? De ce mă privești așa?");
+            speakerName.setText("Kira");
+            dialogueText.setText(" -E vreo problemă? De ce mă privești așa?");
             currentSc = 6;
 
 
         } else if (currentSc == 6) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena7.png").toExternalForm()));
-            dialogueText.setText("???: -Când vine troleibuzul 10?");
+            speakerName.setText("Antagonistul");
+            dialogueText.setText(" -Când vine troleibuzul 10?");
             currentSc = 7;
 
         }else if (currentSc == 7) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena8.png").toExternalForm()));
+            speakerName.setText("Naratorul");
             dialogueText.setText("Kira scoate telefonul.");
             currentSc = 8;
         }    else if (currentSc == 8) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena9.png").toExternalForm()));
-            dialogueText.setText("Pe aplicație scrie că vine în aproximativ 1 minut.");
+            speakerName.setText("Kira");
+            dialogueText.setText("Pe aplicație scrie că vine în aproximativ în câteva secunde.");
             currentSc = 9;
             timerInput.setVisible(true);
             timerLabel.setVisible(true);
@@ -155,12 +163,13 @@ private void onStopClick() {
             boardTrolleyButton.setVisible(true);
             stayButton.setVisible(true);
             timerLabel.setVisible(true);
-            transitionTimer.start(4, timerLabel, this::onTimeExpired);
+            transitionTimer.start(10, timerLabel, this::onTimeExpired);
         }else if (currentSc == 10) {
             onTimeExpired();
         }else if (currentSc == 11) {
             backgroundImage.setImage(new Image(getClass().getResource("/Scene/final3.png").toExternalForm()));
-            dialogueText.setText("Offff laboratoarele estea =((");
+            speakerName.setText("Kira...");
+            dialogueText.setText("”Ce misterios era acel antagonist...”");
             currentSc = 10;
         }
     }
@@ -173,7 +182,7 @@ private void onStopClick() {
         timerLabel.setVisible(false);
         continueButton.setVisible(true);
         backgroundImage.setImage(new Image(getClass().getResource("/Scene/scena11.png").toExternalForm()));
-        dialogueText.setText("> Scuze, dar eu mă duc acasă. Spune Kira și urcă în troleibuz.\n"
+        dialogueText.setText(" ”Scuze, dar eu mă duc acasă. Spune Kira și urcă în troleibuz””\n"
                 + "Ușile se închid, troleibuzul pleacă.");
         currentSc = 11;
     }

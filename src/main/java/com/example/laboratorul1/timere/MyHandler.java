@@ -10,7 +10,7 @@ class MyHandler implements EventHandler<ActionEvent>{
     }
 
     @Override
-    public void handle(ActionEvent ignoreaza){
+    public void handle(ActionEvent event){
         act.run();
 
     }

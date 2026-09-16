@@ -9,14 +9,13 @@ import javafx.scene.control.Label;
 public class TimerSetAutobuz {
 
     public void start(int seconds, Label timerLabel, Runnable action) {
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
+        Timer timer = new Timer(); //ceas
+        TimerTask task = new TimerTask() {//sarcina
 
             int timp = seconds;
 
             @Override
             public void run() {
-
                 int valoareCurenta = timp;
 
                 Platform.runLater(() -> {
@@ -36,6 +35,6 @@ public class TimerSetAutobuz {
             }
         };
 
-        timer.scheduleAtFixedRate(task, 0, 1000);
+        timer.scheduleAtFixedRate(task, 0, 1000); //timerul care execut atsc peste fiecare secunda
     }
 }
